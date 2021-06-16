@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="@{layout/default}">
+<th:block layout:fragment="pageTitle">
+	<title th:text="${title}">deleteGoods title</title>
+	<div class="col-sm-12" th:align="center">
+		<h1 class="m-0">🔑 상품삭제 🔑</h1>
+	</div><!-- /.col -->
+	<div class="col-sm-12" th:align="right">
+		<ol class="breadcrumb float-sm-right">
+			<li class="breadcrumb-item"><a href="/">deleteGoods</a></li>
+			<li class="breadcrumb-item active">deleteGoods.html</li>
+		</ol>
+	</div><!-- /.col -->
+</th:block>
+<th:block layout:fragment="container">
+<div class="col-sm-12" th:align="center">
+	<div class="register-box">
+		<div class="card">
+			<div class="card-body register-card-body">
+				<p class="login-box-msg">상품정보가 맞으면</p>
+				<p class="login-box-msg">상품삭제를 진행해 주세요.</p>
+				<form th:action="@{/deleteGoods}" method="post">
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" name="goodsSellerId" th:value="${goods.goodsSellerId}" readonly="readonly" placeholder="판매자아이디">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fab fa-ideal"></span>
+							</div>
+				    	</div>
+					</div>
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" name="goodsCode" th:value="${goods.goodsCode}" readonly="readonly" placeholder="상품코드">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-barcode"></span>
+							</div>
+				    	</div>
+					</div>
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" name="goodsName" th:value="${goods.goodsName}" readonly="readonly" placeholder="상품명">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-gift"></span>
+							</div>
+				    	</div>
+					</div>
+					<div class="input-group mb-3">
+						<input type="password" class="form-control" name="memberPw" placeholder="패스워드 입력하세요">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-lock"></span>
+							</div>
+						</div>
+					</div>
+					<div class="input-group mb-3">
+						<input type="password" class="form-control" name="memberPwCheck" placeholder="패스워드 확인">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-lock"></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-8" th:align="left">
+							<div class="icheck-primary">
+								<input type="checkbox" id="agreeTerms" name="agreeTerms" value="agree">
+								<label for="agreeTerms">
+									I agree Resist
+								</label>
+							</div>
+						</div>
+						<!-- /.col -->
+						<div class="col-4">
+							<button type="submit" class="btn btn-primary btn-block">상품삭제</button>
+						</div>
+						<!-- /.col -->
+					</div>
+				</form>
+				<p class="login-box-msg" th:if="${fail != null}" th:text="${fail}" style="color: red;"></p>
+			</div>
+		</div>
+	</div>
+</div>
+</th:block>
+
+<th:block layout:fragment="pageJavascript">
+
+</th:block>
+</html>
+
