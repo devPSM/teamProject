@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="@{layout/default}">
+<th:block layout:fragment="pageTitle">
+	<title th:text="${title}">addGoods title</title>
+	<div class="col-sm-12" th:align="center">
+		<h1 class="m-0">🎁상품등록🎁</h1>
+	</div><!-- /.col -->
+	<div class="col-sm-12" th:align="right">
+		<ol class="breadcrumb float-sm-right">
+			<li class="breadcrumb-item"><a href="/">addGoods</a></li>
+			<li class="breadcrumb-item active">addGoods.html</li>
+		</ol>
+	</div><!-- /.col -->
+</th:block>
+
+<th:block layout:fragment="pageJavascript">
+	<script>
+	$(function(){
+		$('#addGoodsBtn').click(function(){
+			var submitFlag = true;
+			var goodsForm = $('#addGoodsForm');
+			var inputObj = goodsForm.find('input');
+			
+			$.each(inputObj, function(e){
+				var inputName = $(this).attr('name');
+				var inputValue = $(this).val();
+				var inputDataValue = $(this).attr('data-value');
+				console.log(inputName + " :: inputName ");
+				if(inputName == 'goodsName'){
+					console.log(inputValue + " :: goodsName의 inputValue");
+					if(inputValue == '' || inputValue == undefined || inputValue == null){
+						alert(inputDataValue + '을 입력하세요');
+						$(this).focus();
+						submitFlag = false;
+						return submitFlag;
+					};
+				}else if(inputName == 'goodsPrice'){
+					console.log(inputValue + " :: goodsPrice의 inputValue");
+					if(inputValue == '' || inputValue == undefined || inputValue == null){
+						alert(inputDataValue + '을 입력하세요');
+						$(this).focus();
+						submitFlag = false;
+						return submitFlag;
+					};
+				};
+			});
+			console.log(submitFlag);
+			if(submitFlag) goodsForm.submit();
+		});
+	});	
+	</script>
+</th:block>
+
+<th:block layout:fragment="container">
+<div class="col-sm-12" th:align="center">
+	<div class="register-box">
+		<div class="card">
+			<div class="card-body register-card-body">
+				<p class="login-box-msg">상품등록을 진행하여 주십시오.</p>
+				<form id="addGoodsForm" th:action="@{/addGoods}" method="post">
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" name="goodsName" data-value="상품명" placeholder="상품명을 입력하세요">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+				    	</div>
+					</div>
+					<div class="input-group mb-3">
+						<input type="number" class="form-control" name="goodsPrice" data-value="상품가격" placeholder="상품가격을 입력하세요">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-lock"></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-8" th:align="left">
+							<div class="icheck-primary">
+								<input type="checkbox" name="agreeTerms" value="agree">
+								<label for="agreeTerms">
+									I agree Resist
+								</label>
+							</div>
+						</div>
+						<!-- /.col -->
+						<div class="col-4">
+							<button type="submit" id="addGoodsBtn" class="btn btn-primary btn-block">상품등록</button>
+						</div>
+						<!-- /.col -->
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+</th:block>
+
+
+</html>
+

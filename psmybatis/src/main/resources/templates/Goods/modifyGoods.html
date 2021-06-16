@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="@{layout/default}">
+<th:block layout:fragment="pageTitle">
+	<title th:text="${title}">modifyGoods title</title>
+	<div class="col-sm-12" th:align="center">
+		<h1 class="m-0">🔑상품수정🔑</h1>
+	</div><!-- /.col -->
+	<div class="col-sm-12" th:align="right">
+		<ol class="breadcrumb float-sm-right">
+			<li class="breadcrumb-item"><a href="/">modifyGoods</a></li>
+			<li class="breadcrumb-item active">modifyGoods.html</li>
+		</ol>
+	</div><!-- /.col -->
+</th:block>
+<th:block layout:fragment="container">
+<div class="col-sm-12" th:align="center">
+	<div class="register-box">
+		<div class="card">
+			<div class="card-body register-card-body">
+				<p class="login-box-msg">상품수정을 진행하여 주십시오.</p>
+				<form th:action="@{/modifyGoods}" method="post">
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" name="goodsName" th:value="${goods.goodsName}" placeholder="상품명을 입력하세요">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+				    	</div>
+					</div>
+					
+					<div class="input-group mb-3">
+						<input type="number" class="form-control" name="goodsPrice" th:value="${goods.goodsPrice}" placeholder="상품가격을 입력하세요">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-lock"></span>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-8" th:align="left">
+							<div class="icheck-primary">
+								<input type="checkbox" id="agreeTerms" name="agreeTerms" value=false>
+								<label for="agreeTerms">
+									I agree Resist
+								</label>
+							</div>
+						</div>
+						<!-- /.col -->
+						<div class="col-4">
+							<button type="submit" class="btn btn-primary btn-block">상품수정</button>
+						</div>
+						<!-- /.col -->
+					</div>
+						<input type="hidden" name="goodsSellerId" th:value="${goods.goodsSellerId}">
+						<input type="hidden" name="goodsCode" th:value="${goods.goodsCode}">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+</th:block>
+
+<th:block layout:fragment="pageJavascript">
+	
+</th:block>
+</html>
+

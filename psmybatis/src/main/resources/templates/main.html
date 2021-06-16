@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="@{layout/default}">
+<th:block layout:fragment="pageTitle">
+	<title th:text="${title}">main title</title>
+	<div class="col-sm-6">
+		<h1 class="m-0">HOME🌟</h1>
+	</div><!-- /.col -->
+	<div class="col-sm-6">
+		<ol class="breadcrumb float-sm-right">
+			<li class="breadcrumb-item"><a href="/">Home</a></li>
+			<li class="breadcrumb-item active">main.html</li>
+		</ol>
+	</div><!-- /.col -->
+</th:block>
+<th:block layout:fragment="container">
+	<div class="col-sm-6">
+		<h2><strong>오늘도 화이팅!</strong></h2><br/>
+		<h1><strong>o(*￣▽￣*)o</strong></h1><br/>
+	</div>	
+</th:block>
+
+<th:block layout:fragment="pageJavascript">
+
+</th:block>
+</html>
+
